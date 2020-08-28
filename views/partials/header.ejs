@@ -7,6 +7,21 @@
   <link rel="stylesheet" href="/stylesheets/style.css"/>
 </head>
 <body>
-  <a href="/games">All Games</a>
-  &nbsp; | &nbsp;
-  <a href="/games/new">Add New Game</a>
+  <nav>
+    <a href="" class="site-logo">VGRDB</a>
+    &nbsp; | &nbsp;
+    <a href="/games">All Games</a>
+    &nbsp; | &nbsp;
+    <a href="/games/new">Add New Game</a>
+    &nbsp; | &nbsp;
+    <ul class="login">
+      <li>
+      <% if (user) { %>
+              <a href="/logout">Log Out</a>
+      <% } else { %>
+              <a href="/auth/google">Login with Google</a>
+      <% } %> 
+      </li>
+    </ul>   
+  </nav>
+  
