@@ -1,0 +1,49 @@
+<%- include('../../views/partials/header') %>
+
+<section id="show-page">
+  <div>Title: </div>
+  <div><%= game.name %></div>
+  <div>Release Year: </div>
+  <div><%= game.releaseYear %></div>
+</section>
+
+<br><br><h2>Reviews</h2>
+<form id="add-review-form" method="POST"
+  action="/games/<%= game._id %>/reviews">
+  <label>Review:</label>
+  <textarea name="review"></textarea>
+  <label>Rating:</label>
+  <select name="rating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <input type="submit" value="Add Review">
+</form>
+
+<% if (game.reviews.length) { %>
+  <table>
+    <thead>
+      <tr>
+      	 <th>Date</th>
+        <th>Review</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% game.reviews.forEach(function(r) { %>
+        <tr>
+          <td><%= r.createdAt.toLocaleDateString() %></td>
+          <td><%= r.review %></td>
+          <td><%= r.rating %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<% } else { %>
+  <h5>No Reviews Yet</h5>
+<% } %>
+
+<%- include('../../views/partials/footer') %>

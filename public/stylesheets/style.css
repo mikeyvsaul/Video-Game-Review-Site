@@ -7,11 +7,7 @@ a {
   color: #00B7FF;
 }
 
-ul {
-  list-style-type: none;
-  display: inline;
-}
-
 nav {
-  display: inline;
+  display: flex;
+  flex-direction: row;
 }
