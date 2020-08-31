@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { schema } = require('./gamer');
 const Schema = mongoose.Schema;
 
 let reviewSchema = new Schema({
@@ -10,11 +9,14 @@ let reviewSchema = new Schema({
   }
 }, {
   timestamps: true
-}
-)
+})
 
 let gameSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true
+  },
+  releaseYear: Number,
   reviews: [reviewSchema],
 }, {
   timestamps: true
