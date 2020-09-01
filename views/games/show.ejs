@@ -38,6 +38,7 @@
           <td><%= r.createdAt.toLocaleDateString() %></td>
           <td><%= r.review %></td>
           <!-- <td><%= r.rating %></td> -->
+          <td><a href="/reviews/<%=r._id%>/edit">Edit</a></td>
           <td>
             <form action="/games/<%=r._id%>?_method=DELETE" method="POST">
               <button class ="small-button red-button" type="submit">X</button>

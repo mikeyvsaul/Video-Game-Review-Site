@@ -1,9 +1,9 @@
 const Game = require('../models/game');
-const { remove } = require('../models/game');
 
 module.exports = {
   create,
-  delete: deleteReview
+  delete: deleteReview,
+  edit
 };
 
 function create(req, res) {
@@ -23,4 +23,13 @@ function deleteReview(req, res) {
       res.redirect(`/games/${game._id}`);
     });
   });
+}
+
+function edit(req, res) {
+  Game.findOne({'reviews._id': req.params.id}, function(err, game) {
+    if (err) {
+      res.redirect(`/games/${game._id}`);
+    }
+    res.render('reviews/edit', { game, review: game.reviews.id })
+  })
 }
