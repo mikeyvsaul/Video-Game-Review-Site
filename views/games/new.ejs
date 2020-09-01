@@ -1,11 +1,27 @@
-<%- include('../../views/partials/header') %>
+<%- include('../partials/header') %>
 
 <form id="new-form" action="/games" method="POST">
   <label>Title:</label>
-  <input type="text" name="name">
+  <input type="text" required name="name">
   <label>Release Year:</label>
   <input type="text" name="releaseYear">
+  <label>Review:</label>
+  <textarea required name="review"></textarea>
+  <!-- <label>Rating:</label> -->
+  <!-- <select name="rating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select> -->
   <input type="submit" value="Add Game">
 </form>
 
-<%- include('../../views/partials/footer') %>
+<!-- <form id="add-review-form" method="POST"
+  action="/games/%= game._id %>/reviews">
+  
+  <input type="submit" value="Add Review">
+</form> -->
+
+<%- include('../partials/footer') %>

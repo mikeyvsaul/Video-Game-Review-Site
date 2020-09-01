@@ -5,7 +5,7 @@ module.exports = {
   new: newGame,
   create,
   show
-}
+};
 
 function index(req, res) {
   Game.find({}, function(err, games) {
@@ -18,10 +18,18 @@ function newGame(req, res) {
 }
 
 function create(req, res) {
-  const game = new Game(req.body);
+  let gameObj = {
+    name: req.body.name,
+    releaseYear: req.body.releaseYear
+  };
+  let reviewObj = {
+    review: req.body.review
+  }
+  const game = new Game(gameObj);
+  game.reviews.push(reviewObj);
   game.save(function(err) {
     if (err) return res.redirect('/games/new');
-    res.redirect('/games');
+    res.redirect(`/games/${game._id}`);
   });
 }
 

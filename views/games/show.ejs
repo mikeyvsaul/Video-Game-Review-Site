@@ -1,4 +1,4 @@
-<%- include('../../views/partials/header') %>
+<%- include('../partials/header') %>
 
 <section id="show-page">
   <div>Title: </div>
@@ -12,14 +12,14 @@
   action="/games/<%= game._id %>/reviews">
   <label>Review:</label>
   <textarea name="review"></textarea>
-  <label>Rating:</label>
-  <select name="rating">
+  <!-- <label>Rating:</label> -->
+  <!-- <select name="rating">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
-  </select>
+  </select> -->
   <input type="submit" value="Add Review">
 </form>
 
@@ -29,7 +29,7 @@
       <tr>
       	 <th>Date</th>
         <th>Review</th>
-        <th>Rating</th>
+        <!-- <th>Rating</th> -->
       </tr>
     </thead>
     <tbody>
@@ -37,7 +37,12 @@
         <tr>
           <td><%= r.createdAt.toLocaleDateString() %></td>
           <td><%= r.review %></td>
-          <td><%= r.rating %></td>
+          <!-- <td><%= r.rating %></td> -->
+          <td>
+            <form action="/games/<%=r._id%>?_method=DELETE" method="POST">
+              <button class ="small-button red-button" type="submit">X</button>
+            </form>
+          </td>
         </tr>
       <% }); %>
     </tbody>
@@ -46,4 +51,4 @@
   <h5>No Reviews Yet</h5>
 <% } %>
 
-<%- include('../../views/partials/footer') %>
+<%- include('../partials/footer') %>

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const gamerSchema = new Schema({
   name: String,
@@ -7,6 +7,6 @@ const gamerSchema = new Schema({
   googleId: String
 }, {
   timestamps: true
-})
+});
 
 module.exports = mongoose.model('Gamer', gamerSchema);

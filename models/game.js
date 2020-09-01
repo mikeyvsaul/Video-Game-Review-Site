@@ -9,7 +9,7 @@ let reviewSchema = new Schema({
   }
 }, {
   timestamps: true
-})
+});
 
 let gameSchema = new Schema({
   name: {
@@ -20,6 +20,6 @@ let gameSchema = new Schema({
   reviews: [reviewSchema],
 }, {
   timestamps: true
-})
+});
 
 module.exports = mongoose.model('Game', gameSchema);
