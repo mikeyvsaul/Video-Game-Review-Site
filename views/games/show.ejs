@@ -9,7 +9,7 @@
 
 <br><br><h2>Reviews</h2>
 <section class="add-reviews">
-  <% if (user) { %>
+  <% if (user && review.gamer != user._id) { %>
     <form id="add-review-form" method="POST"
     action="/games/<%= game._id %>/reviews">
     <label>Review:</label>
@@ -28,27 +28,29 @@
 </section>
 
 
+
+
 <% if (game.reviews.length) { %>
   <table>
     <thead>
       <tr>
-      	 <th>Date</th>
+      	<th>Date</th>
         <th>Review</th>
         <!-- <th>Rating</th> -->
       </tr>
     </thead>
     <tbody>
-      <% game.reviews.forEach(function(r) { %>
-        <% console.log(r.gamer) %> 
+      <% game.reviews.forEach(function(r) { %>  
+
         <tr>
           <td><%= r.createdAt.toLocaleDateString() %></td>
           <td><%= r.review %></td>
           <!-- <td><%= r.rating %></td> -->
           <div class="user-review">
-            <% if (r.gamer.equals(user._id)) { %>
+            <% if (user && r.gamer.equals(user._id)) { %>
               <td><a href="/reviews/<%=r._id%>/edit">Edit</a></td>
               <td>
-                <form action="/games/<%=r._id%>?_method=DELETE" method="POST">
+                <form action="/reviews/<%=r._id%>?_method=DELETE" method="POST">
                   <button class ="small-button red-button" type="submit">X</button>
                 </form>
               </td>

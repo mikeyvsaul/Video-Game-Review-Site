@@ -29,6 +29,7 @@ function create(req, res) {
     gamer: req.user._id
   }
   const game = new Game(gameObj);
+  // game.gamer = req.user._id;
   game.reviews.push(reviewObj);
   game.save(function(err) {
     if (err) return res.redirect('/games/new');

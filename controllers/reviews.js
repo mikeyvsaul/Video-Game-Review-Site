@@ -20,7 +20,9 @@ function create(req, res) {
 function deleteReview(req, res) {
   Game.findOne({'reviews._id': req.params.id}, function(err, game) {
     const reviewSubdoc = game.reviews.id(req.params.id);
-    if (!reviewSubdoc.gamer.equals(req.user._id)) return res.redirect(`/games/${game._id}`);
+    if (!reviewSubdoc.gamer.equals(req.user._id)) {
+      return res.redirect(`/games/${game._id}`)
+    };
     reviewSubdoc.remove();
     game.save(function(err) {
       res.redirect(`/games/${game._id}`);
