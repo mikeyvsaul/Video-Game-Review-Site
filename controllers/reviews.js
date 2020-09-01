@@ -3,7 +3,8 @@ const Game = require('../models/game');
 module.exports = {
   create,
   delete: deleteReview,
-  edit
+  edit,
+  update
 };
 
 function create(req, res) {
@@ -27,9 +28,20 @@ function deleteReview(req, res) {
 
 function edit(req, res) {
   Game.findOne({'reviews._id': req.params.id}, function(err, game) {
+    const reviewSubdoc = game.reviews.id(req.params.id);
     if (err) {
       res.redirect(`/games/${game._id}`);
     }
-    res.render('reviews/edit', { game, review: game.reviews.id })
+    res.render('reviews/edit', { game, review: reviewSubdoc })
   })
+}
+
+function update(req, res) {
+  Game.findOne({'reviews._id': req.params.id}, function(err, game) {
+    const reviewSubdoc = game.reviews.id(req.params.id);
+    reviewSubdoc.review = req.body.review;
+    game.save(function(err) {
+      res.redirect(`/games/${game._id}`);
+    });
+  });
 }

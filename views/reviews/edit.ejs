@@ -1,10 +1,9 @@
 <%- include('../partials/header') %>
 
 <br><br><h2>Edit Review</h2>
-<form id="add-review-form" method="POST"
-  action="/games/<%= game._id %>?_method=PUT">
+<form id="add-review-form" action="/reviews/<%= review._id %>?_method=PUT" method="POST">
   <label>Review:</label>
-  <textarea name="review" value="<%= game.reviews %>"></textarea>
+  <textarea name="review" value="<%= review.review %>"></textarea>
   <!-- <label>Rating:</label> -->
   <!-- <select name="rating">
     <option value="1">1</option>
