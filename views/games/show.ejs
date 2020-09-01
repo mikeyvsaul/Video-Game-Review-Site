@@ -8,20 +8,25 @@
 </section>
 
 <br><br><h2>Reviews</h2>
-<form id="add-review-form" method="POST"
-  action="/games/<%= game._id %>/reviews">
-  <label>Review:</label>
-  <textarea name="review"></textarea>
-  <!-- <label>Rating:</label> -->
-  <!-- <select name="rating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select> -->
-  <input type="submit" value="Add Review">
-</form>
+<section class="add-reviews">
+  <% if (user) { %>
+    <form id="add-review-form" method="POST"
+    action="/games/<%= game._id %>/reviews">
+    <label>Review:</label>
+    <textarea name="review"></textarea>
+    <!-- <label>Rating:</label> -->
+    <!-- <select name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select> -->
+    <input type="submit" value="Add Review">
+  </form>
+  <% } else {} %>
+</section>
+
 
 <% if (game.reviews.length) { %>
   <table>
@@ -34,16 +39,21 @@
     </thead>
     <tbody>
       <% game.reviews.forEach(function(r) { %>
+        <% console.log(r.gamer) %> 
         <tr>
           <td><%= r.createdAt.toLocaleDateString() %></td>
           <td><%= r.review %></td>
           <!-- <td><%= r.rating %></td> -->
-          <td><a href="/reviews/<%=r._id%>/edit">Edit</a></td>
-          <td>
-            <form action="/games/<%=r._id%>?_method=DELETE" method="POST">
-              <button class ="small-button red-button" type="submit">X</button>
-            </form>
-          </td>
+          <div class="user-review">
+            <% if (r.gamer.equals(user._id)) { %>
+              <td><a href="/reviews/<%=r._id%>/edit">Edit</a></td>
+              <td>
+                <form action="/games/<%=r._id%>?_method=DELETE" method="POST">
+                  <button class ="small-button red-button" type="submit">X</button>
+                </form>
+              </td>
+            <% } %> 
+          </div>
         </tr>
       <% }); %>
     </tbody>

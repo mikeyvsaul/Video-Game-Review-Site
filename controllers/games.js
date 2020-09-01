@@ -4,7 +4,8 @@ module.exports = {
   index,
   new: newGame,
   create,
-  show
+  show,
+  delete: deleteGame
 };
 
 function index(req, res) {
@@ -20,10 +21,12 @@ function newGame(req, res) {
 function create(req, res) {
   let gameObj = {
     name: req.body.name,
-    releaseYear: req.body.releaseYear
+    releaseYear: req.body.releaseYear,
+    gamer: req.user._id
   };
   let reviewObj = {
-    review: req.body.review
+    review: req.body.review,
+    gamer: req.user._id
   }
   const game = new Game(gameObj);
   game.reviews.push(reviewObj);
@@ -35,6 +38,12 @@ function create(req, res) {
 
 function show(req, res) {
   Game.findById(req.params.id, function(err, game) {
-     res.render('games/show', { game })
+     res.render('games/show', { game, review: game.reviews })
   })
+}
+
+function deleteGame(req, res) {
+  Game.findByIdAndDelete(req.params.id, function(err) {
+    res.redirect('/games');
+  });
 }

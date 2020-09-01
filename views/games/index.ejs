@@ -14,12 +14,22 @@
         <td><%= g.name %></td>
         <td><%= g.releaseYear %></td>
         <td><a href="/games/<%= g._id %>">DETAILS</a></td>
+        <td>
+          <form action="/games/<%=g._id%>?_method=DELETE" method="POST">
+            <button class ="small-button red-button" type="submit">X</button>
+          </form>
+        </td>
       </tr>
       <% }); %>
     </tbody>
   </table>
 
-<a href="/games/new">Add New Game</a>
+
+<section class="add-game">
+  <% if (user) { %>
+    <a href="/games/new">Add New Game</a>
+  <% } else {} %>
+</section>   
 
 <%- include('../partials/footer') %> 
 

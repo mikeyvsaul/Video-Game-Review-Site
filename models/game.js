@@ -5,7 +5,7 @@ let reviewSchema = new Schema({
   review: String,
   gamer: {
     type: Schema.Types.ObjectId,
-    ref: 'gamer'
+    ref: 'Gamer'
   }
 }, {
   timestamps: true
@@ -17,6 +17,10 @@ let gameSchema = new Schema({
     required: true
   },
   releaseYear: Number,
+  gamer: {
+    type: Schema.Types.ObjectId,
+    ref: 'Gamer'
+  },
   reviews: [reviewSchema],
 }, {
   timestamps: true
