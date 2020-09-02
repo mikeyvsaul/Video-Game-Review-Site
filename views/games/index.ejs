@@ -1,35 +1,46 @@
 <%- include('../partials/header') %>
 
-<table id="games list">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Release<br>Year</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% games.forEach(function(g) { %>
+<div class="container">
+  <table class="table" id="games list">
+    <thead>
       <tr>
-        <td><%= g.name %></td>
-        <td><%= g.releaseYear %></td>
-        <td><a href="/games/<%= g._id %>">DETAILS</a></td>
-        <td>
-          <form action="/games/<%=g._id%>?_method=DELETE" method="POST">
-            <button class ="small-button red-button" type="submit">X</button>
-          </form>
-        </td>
+        <th>Title</th>
+        <th>Release<br>Year</th>
+        <th></th>
       </tr>
-      <% }); %>
-    </tbody>
-  </table>
-
-
-<section class="add-game">
-  <% if (user) { %>
-    <a href="/games/new">Add New Game</a>
-  <% } else {} %>
-</section>   
+    </thead>
+    <tbody>
+      <% games.forEach(function(g) { %>
+        <tr>
+          <td>
+            <img id="index-art" src="<%= g.boxArt %>" alt="">
+          </td>
+          <td><%= g.name %></td>
+          <td><%= g.releaseYear %></td>
+          <td>
+            <form action="/games/<%= g._id %>">
+              <button type="submit">Details</button>
+            </form>
+          <td>
+            <form action="/games/<%=g._id%>?_method=DELETE" method="POST">
+              <button class ="small-button red-button" type="submit">X</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  
+  
+  <section class="add-game">
+    <% if (user) { %>
+      <form action="/games/new">
+        <button type="submit">Add New Game</button>
+      </form>
+    <% } else {} %>
+  </section>  
+</div>
+ 
 
 <%- include('../partials/footer') %> 
 

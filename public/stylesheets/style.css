@@ -11,3 +11,11 @@ nav {
   display: flex;
   flex-direction: row;
 }
+
+#index-art {
+  height: 100px;
+}
+
+#details-art {
+  height: 50vh;
+}

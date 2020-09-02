@@ -17,6 +17,7 @@ let gameSchema = new Schema({
     required: true
   },
   releaseYear: Number,
+  boxArt: String,
   gamer: {
     type: Schema.Types.ObjectId,
     ref: 'Gamer'

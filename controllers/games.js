@@ -1,4 +1,5 @@
 const Game = require('../models/game');
+const game = require('../models/game');
 
 module.exports = {
   index,
@@ -22,6 +23,7 @@ function create(req, res) {
   let gameObj = {
     name: req.body.name,
     releaseYear: req.body.releaseYear,
+    boxArt: req.body.boxArt,
     gamer: req.user._id
   };
   let reviewObj = {

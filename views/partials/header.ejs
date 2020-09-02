@@ -7,26 +7,19 @@
   <link rel="stylesheet" href="/stylesheets/style.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
 </head>
-<body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a href="/games">All Games</a>
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-      <!-- navbar items, navbar burger... -->
-    </div>
+<body class="has-navbar-fixed-top has-background-info-dark">
+  <nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-menu">
-      <section class="login">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/games">All Games</a>
+      </div>
+      <div class="navbar-end">
         <% if (user) { %>
-                <a href="/logout">Log Out</a>
-        <% } else { %>
-                <a href="/auth/google">Login with Google</a>
-        <% } %> 
-      </section>   
-      <!-- navbar start, navbar end -->
+          <a class="navbar-item" href="/logout">Log Out</a>
+          <% } else { %>
+            <a class="navbar-item" href="/auth/google">Login with Google</a>
+            <% } %> 
+      </div>   
     </div>
   </nav>
   <!-- <nav>
