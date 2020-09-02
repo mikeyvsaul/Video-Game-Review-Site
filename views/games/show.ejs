@@ -5,11 +5,11 @@
     <div class="column">
       <img id="details-art" src="<%= game.boxArt %>" alt="">
     </div>
-    <div class="column">
-      <div>Title: </div>
-      <div><%= game.name %></div>
-      <div>Release Year: </div>
-      <div><%= game.releaseYear %></div>
+    <div class="column  is-two-thirds">
+      <div>Title: <%= game.name %> </div>
+      <div></div>
+      <div>Release Year: <%= game.releaseYear %></div>
+      <div></div>
     </div>
   </div>
   
@@ -24,7 +24,7 @@
   
   
   <% if (game.reviews.length) { %>
-    <table>
+    <table class="table">
       <thead>
         <tr>
           <th>Date</th>

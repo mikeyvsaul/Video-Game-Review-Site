@@ -17,5 +17,9 @@ nav {
 }
 
 #details-art {
-  height: 50vh;
+  height: 40vh;
+}
+
+#index-review {
+  width: 45%;
 }
