@@ -5,22 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VGRDB</title>
   <link rel="stylesheet" href="/stylesheets/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
 </head>
 <body>
-  <nav>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a href="/games">All Games</a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+      <!-- navbar items, navbar burger... -->
+    </div>
+    <div class="navbar-menu">
+      <section class="login">
+        <% if (user) { %>
+                <a href="/logout">Log Out</a>
+        <% } else { %>
+                <a href="/auth/google">Login with Google</a>
+        <% } %> 
+      </section>   
+      <!-- navbar start, navbar end -->
+    </div>
+  </nav>
+  <!-- <nav>
     <!-- <a href="" class="site-logo">VGRDB</a>
     &nbsp; | &nbsp; -->
-    <a href="/games">All Games</a>
-    &nbsp; | &nbsp;
-    <!-- <a href="/games/new">Add New Game</a> -->
     <!-- &nbsp; | &nbsp; -->
-    <section class="login">
-      <% if (user) { %>
-              <a href="/logout">Log Out</a>
-      <% } else { %>
-              <a href="/auth/google">Login with Google</a>
-      <% } %> 
-    </section>   
 
-  </nav>
+  <!-- </nav> --> 
   

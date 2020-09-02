@@ -1,11 +1,16 @@
 const Game = require('../models/game');
 
 module.exports = {
+  new: newReview,
   create,
   delete: deleteReview,
   edit,
   update
 };
+
+function newReview(req, res) {
+  res.render('reviews/new', { gameID: req.params.id })
+}
 
 function create(req, res) {
   Game.findById(req.params.id, function(err, game) {

@@ -8,24 +8,9 @@
 </section>
 
 <br><br><h2>Reviews</h2>
-<section class="add-reviews">
-  <% if (user && review.gamer != user._id) { %>
-    <form id="add-review-form" method="POST"
-    action="/games/<%= game._id %>/reviews">
-    <label>Review:</label>
-    <textarea name="review"></textarea>
-    <!-- <label>Rating:</label> -->
-    <!-- <select name="rating">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select> -->
-    <input type="submit" value="Add Review">
-  </form>
-  <% } else {} %>
-</section>
+<% if (user && (reviews.filter(review => review.gamer.equals(user._id)).length < 1)) { %>
+  <a href="/games/<%= game._id %>/reviews/new">Add New Review</a>
+<% } else {} %>
 
 
 
@@ -41,7 +26,6 @@
     </thead>
     <tbody>
       <% game.reviews.forEach(function(r) { %>  
-
         <tr>
           <td><%= r.createdAt.toLocaleDateString() %></td>
           <td><%= r.review %></td>
