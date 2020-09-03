@@ -1,56 +1,85 @@
-<%- include('../partials/header') %>
-
-<div id="show-view">
-  <div id="show-container" class="container is-fluid">
-    <div class="columns">
-      <div class="column">
-        <img id="details-art" src="<%= game.boxArt %>" alt="Game Box Art">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VGRDB</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
+</head>
+<body id="show-bg" class="has-navbar-fixed-top has-background-light">
+  <nav id="navbar" class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/games">VGRDB</a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/games">All Games</a>
+        <% if (user) { %>
+          <a class="navbar-item" href="/games/new">Add Game</a>
+        <% } %>
       </div>
-      <div id="game-details" class="column is-two-thirds">
-        <div class="content">
-          <h2>Title: <%= game.name %> </h2>
-          <h4>Release Year: <%= game.releaseYear %></h4>
+      <div class="navbar-end">
+        <% if (user) { %>
+          <a class="navbar-item" href="/logout">Log Out</a>
+          <% } else { %>
+            <a class="navbar-item" href="/auth/google">Login with Google</a>
+            <% } %> 
+      </div>   
+    </div>
+  </nav>
+
+  <div id="show-view">
+    <div id="show-container" class="container is-fluid">
+      <div class="columns">
+        <div class="column">
+          <img id="details-art" src="<%= game.boxArt %>" alt="Game Box Art">
+        </div>
+        <div id="game-details" class="column is-two-thirds">
+          <div class="content">
+            <h2>Title: <%= game.name %> </h2>
+            <h4>Release Year: <%= game.releaseYear %></h4>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <br><br><div id="reviews-container" class="container is-fluid">
-    <% if (user && (reviews.filter(review => review.gamer.equals(user._id)).length < 1)) { %>
-      <form action="/games/<%= game._id %>/reviews/new">
-        <button class="button is-info" type="submit">Add New Review</button>
-      </form>
-    <% } %>
-  
-    <% if (game.reviews.length) { %>
-      <table id="reviews-table" class="table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Review</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% game.reviews.forEach(function(r) { %>  
+    
+    <br><br><div id="reviews-container" class="container">
+      <% if (user && (reviews.filter(review => review.gamer.equals(user._id)).length < 1)) { %>
+        <form action="/games/<%= game._id %>/reviews/new">
+          <button class="button is-info" type="submit">Add New Review</button>
+        </form>
+      <% } %>
+    
+      <% if (game.reviews.length) { %>
+        <table id="reviews-table" class="table">
+          <thead>
             <tr>
-              <td><%= r.createdAt.toLocaleDateString() %></td>
-              <td><textarea class="textarea" rows="10" cols="90" readonly><%= r.review %></textarea></td>
-              <div class="user-review">
-                <% if (user && r.gamer.equals(user._id)) { %>
-                  <td><a class="button is-warning" href="/reviews/<%=r._id%>/edit">Edit</a></td>
-                  <td>
-                    
-                  </td>
-                <% } %> 
-              </div>
+              <th>Date</th>
+              <th>Review</th>
             </tr>
-          <% }); %>
-        </tbody>
-      </table>
-    <% } else { %>
-      <h5>No Reviews Yet</h5>
-    <% } %>
+          </thead>
+          <tbody>
+            <% game.reviews.forEach(function(r) { %>  
+              <tr>
+                <td><%= r.createdAt.toLocaleDateString() %></td>
+                <td><textarea class="textarea" rows="10" cols="90" readonly><%= r.review %></textarea></td>
+                <div class="user-review">
+                  <% if (user && r.gamer.equals(user._id)) { %>
+                    <td><a class="button is-warning" href="/reviews/<%=r._id%>/edit">Edit</a></td>
+                  <% } %> 
+                </div>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <h5>No Reviews Yet</h5>
+      <% } %>
+    </div>
   </div>
-</div>
+
+
 
 <%- include('../partials/footer') %>
