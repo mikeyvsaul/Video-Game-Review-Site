@@ -1,9 +1,31 @@
-<%- include('../views/partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VGRDB</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+</head>
 
-<body>
-  <h1><%= title %></h1>
-  <p>Welcome to <%= title %></p>
-  <p>A Videogame Community Review Site</p>
+<body id="splash-page">
+  <div id="splash-head" class="content is-large">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p>A Videogame Community Review Site</p>
+  </div>
+  <p>Log In to Add Reviews for Games You Have Played</p>    
+    <div id="splash-login" class="content is-medium">
+      <% if (user) { %>
+        <a class="button is-danger" href="/logout">Log Out</a>
+        <% } else { %>
+          <a class="button is-primary" href="/auth/google">Login with Google</a>
+          <% } %>
+    </div>
+    <p>Click for Game Reviews</p>  
+    <div id="splash-games" class="content is-medium">
+      <a class="button is-info" href="/games">List of Games</a>
+    </div>   
 </body>
 
-<%- include('../views/partials/footer') %>

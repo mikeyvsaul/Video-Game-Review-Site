@@ -1,7 +1,9 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  height: 100vh;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  height: auto; 
 }
 
 a {
@@ -11,6 +13,13 @@ a {
 nav {
   display: flex;
   flex-direction: row;
+}
+
+#navbar {
+  background-color: rgb(196, 26, 26);
+  padding: 0px 30px;
+  font-weight: bold;
+  /* font: 24px; */
 }
 
 #index-art {
@@ -56,4 +65,27 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#new-form, #add-reviews, #edit-reviews {
+  display: flex;
+  padding: 20px 60px;
+  width: 75%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#splash-page, #splash-head {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  align-items: center;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+#splash-login, #splash-games {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }

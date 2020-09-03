@@ -1,23 +1,24 @@
 <%- include('../partials/header') %>
 
 <div id="show-view">
-  <div id="show-container">
+  <div id="show-container" class="container is-fluid">
     <div class="columns">
       <div class="column">
-        <img id="details-art" src="<%= game.boxArt %>" alt="">
+        <img id="details-art" src="<%= game.boxArt %>" alt="Game Box Art">
       </div>
-      <div class="column is-two-thirds">
-        <div>Title: <%= game.name %> </div>
-        <div>Release Year: <%= game.releaseYear %></div>
+      <div id="game-details" class="column is-two-thirds">
+        <div class="content">
+          <h2>Title: <%= game.name %> </h2>
+          <h4>Release Year: <%= game.releaseYear %></h4>
+        </div>
       </div>
     </div>
   </div>
   
-  <div id="reviews-container" >
-    <br><br><h2>Reviews</h2>
+  <br><br><div id="reviews-container" class="container is-fluid">
     <% if (user && (reviews.filter(review => review.gamer.equals(user._id)).length < 1)) { %>
       <form action="/games/<%= game._id %>/reviews/new">
-        <button type="submit">Add New Review</button>
+        <button class="button is-info" type="submit">Add New Review</button>
       </form>
     <% } %>
   
@@ -27,21 +28,19 @@
           <tr>
             <th>Date</th>
             <th>Review</th>
-            <!-- <th>Rating</th> -->
           </tr>
         </thead>
         <tbody>
           <% game.reviews.forEach(function(r) { %>  
             <tr>
               <td><%= r.createdAt.toLocaleDateString() %></td>
-              <td><%= r.review %></td>
-              <!-- <td><%= r.rating %></td> -->
+              <td><textarea class="textarea" rows="10" cols="90" readonly><%= r.review %></textarea></td>
               <div class="user-review">
                 <% if (user && r.gamer.equals(user._id)) { %>
-                  <td><a href="/reviews/<%=r._id%>/edit"><button>Edit</button></a></td>
+                  <td><a class="button is-warning" href="/reviews/<%=r._id%>/edit">Edit</a></td>
                   <td>
                     <form action="/reviews/<%=r._id%>?_method=DELETE" method="POST">
-                      <button class ="small-button red-button" type="submit">X</button>
+                      <button class="button is-danger" type="submit">X</button>
                     </form>
                   </td>
                 <% } %> 

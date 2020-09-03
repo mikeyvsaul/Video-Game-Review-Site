@@ -1,22 +1,15 @@
 <%- include('../partials/header') %>
 
-<section class="add-reviews">
+<section class="container" id="add-reviews">
   <% if (user) { %>
-    <form id="add-review-form" method="POST"
+  <form id="add-review-form" method="POST"
     action="/games/<%=gameID%>/reviews">
     <label>Review:</label>
-    <textarea class="textarea" rows="15" name="review"></textarea>
-    <!-- <label>Rating:</label> -->
-    <!-- <select name="rating">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select> -->
-    <input type="submit" value="Add Review">
+    <textarea class="textarea" rows="15" minlength="200" placeholder="minimum 200 characters" 
+      required name="review"></textarea>
+    <input class="button is-primary" type="submit" value="Add Review">
   </form>
-  <% } else {} %>
+  <% } %>
 </section>
 
 <%- include('../partials/footer') %>

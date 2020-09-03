@@ -1,23 +1,19 @@
 <%- include('../partials/header') %>
 
-<form id="new-form" action="/games" method="POST">
-  <label>Title:</label>
-  <input type="text" required name="name">
-  <label>Release Year:</label>
-  <input type="text" name="releaseYear">
-  <label>Image Link</label>
-  <input type="text" name="boxArt">
-  <label>Review:</label>
-  <textarea required name="review"></textarea>
-  <!-- <label>Rating:</label> -->
-  <!-- <select name="rating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select> -->
-  <input type="submit" value="Add Game">
-</form>
+<div class="container" id="new-form">
+  <form action="/games" method="POST">
+    <label>Title:</label>
+    <br><input type="text" required name="name">
+    <br><label>Release Year:</label>
+    <br><input type="text" name="releaseYear">
+    <br><label>Box Art Image Link:</label>
+    <br><input type="text" name="boxArt">
+    <br><label>Review:</label>
+    <textarea class="textarea" rows="15" minlength="200" placeholder="minimum 200 characters" 
+      required name="review"></textarea>
+    <input class="button is-primary is-normal" type="submit" value="Add Game">
+  </form>
+</div>
+
 
 <%- include('../partials/footer') %>
