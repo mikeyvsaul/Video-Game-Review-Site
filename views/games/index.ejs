@@ -2,7 +2,7 @@
 
 <div id="index-view">
   <div id="index-container" class="container">
-    <table class="table is-hoverable has-background-light" id="games-list">
+    <table id="index-table" class="table is-hoverable has-background-light" id="games-list">
       <tbody>
       <% games.forEach(function(g) { %>
         <tr class="index-row" onclick="window.location.href='/games/<%= g._id %>'">
@@ -12,7 +12,7 @@
           <td><%= g.name %></td>
           <td><%= g.releaseYear %></td>
           <% if (g.reviews.length > 0) { %> 
-            <td id="index-review">
+            <td id="index-review" style="word-wrap: break-word">
               <%= g.reviews[0].review.substring(0, 240)  %>... 
             </td>
             <% } else { %>

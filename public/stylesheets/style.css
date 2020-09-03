@@ -46,6 +46,11 @@ nav {
   height: 40vh;
 }
 
+#index-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
 #index-review {
   width: 55%;
 }
