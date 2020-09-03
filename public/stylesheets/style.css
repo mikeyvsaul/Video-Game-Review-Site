@@ -132,3 +132,7 @@ nav {
   width: 100%;
   margin-top: 0;
 }
+
+.index-row {
+  cursor: pointer;
+}

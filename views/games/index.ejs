@@ -5,7 +5,7 @@
     <table class="table is-hoverable has-background-light" id="games-list">
       <tbody>
       <% games.forEach(function(g) { %>
-        <tr onclick="window.location.href='/games/<%= g._id %>'">
+        <tr class="index-row" onclick="window.location.href='/games/<%= g._id %>'">
           <td>
             <img id="index-art" src="<%= g.boxArt %>" alt="">
           </td>
