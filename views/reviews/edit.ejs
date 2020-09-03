@@ -5,7 +5,10 @@
     <label>Edit Review:</label>
     <textarea class="textarea" rows="15" minlength="200" placeholder="minimum 200 characters" 
       required name="review"><%= review.review %></textarea>
-    <input class="button is-primary" type="submit" value="Edit Review">
+    <br><input id="edit-button" class="button is-primary" type="submit" value="Edit Review">
+  </form>
+  <form action="/reviews/<%=review._id%>?_method=DELETE" method="POST">
+    <button id="delete-button" class="button is-danger" type="submit">Delete Review</button>
   </form>
 </div>
 

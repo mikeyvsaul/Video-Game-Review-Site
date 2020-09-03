@@ -4,8 +4,7 @@ module.exports = {
   index,
   new: newGame,
   create,
-  show,
-  delete: deleteGame
+  show
 };
 
 function index(req, res) {
@@ -42,10 +41,4 @@ function show(req, res) {
   Game.findById(req.params.id, function(err, game) {
      res.render('games/show', { game, reviews: game.reviews })
   })
-}
-
-function deleteGame(req, res) {
-  Game.findByIdAndDelete(req.params.id, function(err) {
-    res.redirect('/games');
-  });
 }

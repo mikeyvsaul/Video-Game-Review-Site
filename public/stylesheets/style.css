@@ -1,3 +1,7 @@
+html {
+  height: 100vh;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -75,6 +79,11 @@ nav {
   justify-content: center;
 }
 
+#splash-page {
+  background-image: url(https://i.imgur.com/V0YwKOf.jpg);
+  background-size: cover;
+}
+
 #splash-page, #splash-head {
   display: flex;
   flex-direction: column;
@@ -88,4 +97,14 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-content: center;
+}
+
+#edit-button, #delete-button {
+  width: 120px;
+}
+
+#splash-hr {
+  background-color:#cfcfcf;
+  width: 100%;
+  margin-top: 0;
 }

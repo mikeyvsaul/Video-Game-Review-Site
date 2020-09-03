@@ -15,12 +15,9 @@
             <td id="index-review">
               <%= g.reviews[0].review.substring(0, 240)  %>... 
             </td>
-            <% } %>   
-            <td>
-              <form action="/games/<%=g._id%>?_method=DELETE" method="POST">
-                <button class ="small-button red-button" type="submit">X</button>
-              </form>
-            </td>
+            <% } else { %>
+              <td id="index-review">No Reviews Yet</td>
+            <% } %>      
           </tr>
           <% }); %>
         </tbody>

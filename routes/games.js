@@ -6,7 +6,6 @@ router.get('/', gamesCtrl.index);
 router.get('/new', isLoggedIn, gamesCtrl.new);
 router.post('/', isLoggedIn, gamesCtrl.create);
 router.get('/:id', gamesCtrl.show);
-router.delete('/:id', gamesCtrl.delete);
 
 function isLoggedIn(req, res, next) {
   if ( req.isAuthenticated() ) return next();
