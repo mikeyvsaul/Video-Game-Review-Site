@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100vh;
 }
 
 a {
@@ -21,5 +22,38 @@ nav {
 }
 
 #index-review {
-  width: 45%;
+  width: 55%;
+}
+
+#index-view {
+  padding: 20px;
+}
+
+#games-list {
+  width: 90%;
+}
+
+#index-container {
+  display: flex;
+  justify-content: center;
+}
+
+#show-view {
+  padding: 20px;
+}
+
+#show-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#reviews-table {
+  width: 90%;
+}
+
+#reviews-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

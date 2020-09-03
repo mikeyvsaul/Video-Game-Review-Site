@@ -1,49 +1,32 @@
 <%- include('../partials/header') %>
 
-<div class="container">
-  <table class="table" id="games list">
-    <!-- <thead>
-      <tr>
-        <th>Title</th>
-        <th>Release<br>Year</th>
-        <th></th>
-      </tr>
-    </thead> -->
-    <tbody>
+<div id="index-view">
+  <div id="index-container" class="container">
+    <table class="table is-hoverable has-background-info" id="games-list">
+      <tbody>
       <% games.forEach(function(g) { %>
-        <tr>
+        <tr onclick="window.location.href='/games/<%= g._id %>'">
           <td>
             <img id="index-art" src="<%= g.boxArt %>" alt="">
           </td>
           <td><%= g.name %></td>
           <td><%= g.releaseYear %></td>
-          <td id="index-review">
-            <%= g.reviews[0].review.substring(0, 200)  %>... 
-          </td>
-          <td>
-            <form action="/games/<%= g._id %>">
-              <button type="submit">Details</button>
-            </form>
-          <td>
-            <form action="/games/<%=g._id%>?_method=DELETE" method="POST">
-              <button class ="small-button red-button" type="submit">X</button>
-            </form>
-          </td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table>
-  
-  
-  <section class="add-game">
-    <% if (user) { %>
-      <form action="/games/new">
-        <button type="submit">Add New Game</button>
-      </form>
-    <% } else {} %>
-  </section>  
+          <% if (g.reviews.length > 0) { %> 
+            <td id="index-review">
+              <%= g.reviews[0].review.substring(0, 240)  %>... 
+            </td>
+            <% } %>   
+            <td>
+              <form action="/games/<%=g._id%>?_method=DELETE" method="POST">
+                <button class ="small-button red-button" type="submit">X</button>
+              </form>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>    
 </div>
- 
 
 <%- include('../partials/footer') %> 
 

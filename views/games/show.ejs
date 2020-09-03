@@ -1,61 +1,59 @@
 <%- include('../partials/header') %>
 
-<div class="container">
-  <div class="columns">
-    <div class="column">
-      <img id="details-art" src="<%= game.boxArt %>" alt="">
-    </div>
-    <div class="column  is-two-thirds">
-      <div>Title: <%= game.name %> </div>
-      <div></div>
-      <div>Release Year: <%= game.releaseYear %></div>
-      <div></div>
+<div id="show-view">
+  <div id="show-container">
+    <div class="columns">
+      <div class="column">
+        <img id="details-art" src="<%= game.boxArt %>" alt="">
+      </div>
+      <div class="column is-two-thirds">
+        <div>Title: <%= game.name %> </div>
+        <div>Release Year: <%= game.releaseYear %></div>
+      </div>
     </div>
   </div>
   
-  <br><br><h2>Reviews</h2>
-  <% if (user && (reviews.filter(review => review.gamer.equals(user._id)).length < 1)) { %>
-    <form action="/games/<%= game._id %>/reviews/new">
-      <button type="submit">Add New Review</button>
-    </form>
-  <% } %>
+  <div id="reviews-container" >
+    <br><br><h2>Reviews</h2>
+    <% if (user && (reviews.filter(review => review.gamer.equals(user._id)).length < 1)) { %>
+      <form action="/games/<%= game._id %>/reviews/new">
+        <button type="submit">Add New Review</button>
+      </form>
+    <% } %>
   
-  
-  
-  
-  <% if (game.reviews.length) { %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Review</th>
-          <!-- <th>Rating</th> -->
-        </tr>
-      </thead>
-      <tbody>
-        <% game.reviews.forEach(function(r) { %>  
+    <% if (game.reviews.length) { %>
+      <table id="reviews-table" class="table">
+        <thead>
           <tr>
-            <td><%= r.createdAt.toLocaleDateString() %></td>
-            <td><%= r.review %></td>
-            <!-- <td><%= r.rating %></td> -->
-            <div class="user-review">
-              <% if (user && r.gamer.equals(user._id)) { %>
-                <td><a href="/reviews/<%=r._id%>/edit"><button>Edit</button></a></td>
-                <td>
-                  <form action="/reviews/<%=r._id%>?_method=DELETE" method="POST">
-                    <button class ="small-button red-button" type="submit">X</button>
-                  </form>
-                </td>
-              <% } %> 
-            </div>
+            <th>Date</th>
+            <th>Review</th>
+            <!-- <th>Rating</th> -->
           </tr>
-        <% }); %>
-      </tbody>
-    </table>
-  <% } else { %>
-    <h5>No Reviews Yet</h5>
-  <% } %>
+        </thead>
+        <tbody>
+          <% game.reviews.forEach(function(r) { %>  
+            <tr>
+              <td><%= r.createdAt.toLocaleDateString() %></td>
+              <td><%= r.review %></td>
+              <!-- <td><%= r.rating %></td> -->
+              <div class="user-review">
+                <% if (user && r.gamer.equals(user._id)) { %>
+                  <td><a href="/reviews/<%=r._id%>/edit"><button>Edit</button></a></td>
+                  <td>
+                    <form action="/reviews/<%=r._id%>?_method=DELETE" method="POST">
+                      <button class ="small-button red-button" type="submit">X</button>
+                    </form>
+                  </td>
+                <% } %> 
+              </div>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h5>No Reviews Yet</h5>
+    <% } %>
+  </div>
 </div>
-
 
 <%- include('../partials/footer') %>
